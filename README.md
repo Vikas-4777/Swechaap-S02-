@@ -1,96 +1,45 @@
-# Media & Democracy Simulation
+# Role & Influence of Media in Democracy (Headline Challenge Arena)
 
-An interactive educational web platform and simulation game designed to teach citizens and students how the media operates in a democracy and how to practice critical media literacy.
+## Description of the Project
+An interactive, serverless educational web platform and simulation game designed to teach citizens and students how the media operates in a democracy and how to practice critical media literacy.
 
----
+## Problem Statement
+In a digital age flooded with instantaneous information, citizens are frequently exposed to unverified rumors, deepfakes, and clickbait. The lack of media literacy leads to the rapid spread of misinformation, which weakens public trust in democratic institutions, creates artificial panic, and divides communities.
 
-## 🌟 Key Features
+## Solution (What your project does)
+This project provides an interactive interface consisting of an **Educational Learning Center** showing the 8 critical roles of the media in a democracy, coupled with an **Interactive Checklist** showing how to detect bias, check sources, and cross-reference information. It features a **Headline Challenge Arena (Simulation Game)** where players evaluate 5 random headlines from a pool of 25, make critical decisions, and witness the immediate consequences on a dynamic **Democracy Impact Dashboard** tracking public trust and community civic health.
 
-### 1. Interactive Media Roles Guide
-Learn about the **8 core roles** that the press plays in maintaining a free and transparent democratic society:
-* **The Watchdog**: Exposing corruption and holding power accountable.
-* **The Informer**: Delivering verified, unbiased facts for civic decision-making.
-* **The Public Forum**: Providing a public square for diverse community voices.
-* **The Gatekeeper**: Fact-checking and filtering out false rumors before publishing.
-* **The Agenda Setter**: Directing public focus to critical, ignored societal issues.
-* **The Mobilizer**: Encouraging voter turnout and community engagement.
-* **The Civic Educator**: Translating complex laws and bills into clear, everyday guides.
-* **The Consensus Builder**: Bridging political divides and promoting civil debate.
+## Features
+* **Interactive Media Roles Guide**: Study the 8 key roles (Watchdog, Informer, Public Forum, Gatekeeper, Agenda Setter, Mobilizer, Civic Educator, Consensus Builder) with real-world case study examples and illustrations.
+* **Media Literacy Checklist**: Tools to inspect sources, identify loaded language/biases, and cross-reference stories.
+* **Headline Challenge Arena**: 5 random challenge rounds evaluating news cards.
+* **Democracy Impact Dashboard**: Dynamic feedback showing choice deltas (+25%/-25%) and direct consequences of user actions.
+* **Voter Statistics & Civic Health Meter**: Visual progress charts and civic health gauges that react to citizen choices.
+* **Citizen Report Card**: Round-by-round breakdown summarizing options, decisions, and scores.
 
-### 2. Media Literacy Toolkit
-An investigative checklist showing citizens how to evaluate news posts using three pillars:
-* **Identifying Bias**: Spotting loaded language and one-sided views.
-* **Verifying Sources**: Checking credentials, domain records, and author names.
-* **Cross-Referencing**: Looking up stories across other credible mainstream channels.
-
-### 3. Headline Challenge Arena (Simulation Game)
-A interactive game consisting of **5 random rounds** chosen from a pool of **25 distinct challenges** representing various media scenarios:
-* Evaluate simulated social media feeds containing verified news or unverified rumors.
-* Inspect source details, domain dates, and run background fact-check looks.
-* Make your move by selecting A, B, C, or D (Verify, Share, Ignore, or Report).
-
-### 4. Democracy Impact Dashboard
-Witness the direct consequences of your digital actions in real-time:
-* **Direct Consequences**: Read detailed logs showing the civic impact of your choice.
-* **Community Decisions**: See global statistics on how other citizens responded.
-* **Community Civic Health**: Watch the community health meter react to your fact-checking or rumor-spreading habits.
-
-### 5. Citizen Report Card & Round Breakdown
-At the end of the game, unlock your final report card:
-* Shows your cumulative **Personal Civic Health** percentage and earned rank (e.g. *Master Fact-Checker*, *Digital Defender*, *Rumor Spreader*).
-* Delivers a **round-by-round breakdown** reviewing each headline, your selected options, correct answers, and specific health deltas (+25%, -25%).
-
----
-
-## 🛠️ Technology Stack
-* **Backend**: Node.js & Express.js
+## Tech Stack Used
 * **Frontend**: HTML5, Vanilla CSS3 (Glassmorphic Theme), Vanilla JavaScript (ES6)
-* **Icons**: Lucide Icons library
-* **Fonts**: Google Fonts (*Outfit* and *Inter*)
+* **Icons**: Lucide Icons
+* **Fonts**: Outfit & Inter (Google Fonts)
+* **Hosting**: Netlify (Fully Static / Serverless)
 
----
-
-## 🚀 Installation & Local Setup
-
-### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed.
-
-### Steps
+## How to Run the Project (Steps)
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Vikas-4777/Swechaap-S02-.git
    cd Swechaap-S02-
    ```
-
-2. **Install Dependencies**:
+2. **Open the Files**:
+   Since the app is fully client-side and serverless, you can run it directly:
+   * Double-click `index.html` in your file explorer, OR
+   * Run a local static server (e.g. using VS Code Live Server extension or `npx serve .`).
+3. **Optional Node/Express Local Running**:
+   You can also run the local Node server if you wish to run the API version:
    ```bash
    npm install
-   ```
-
-3. **Start the Server**:
-   ```bash
    npm start
    ```
+   Open `http://localhost:3000` in your web browser.
 
-4. **Play the Simulation**:
-   Open [http://localhost:3000](http://localhost:3000) in your web browser.
-
----
-
-## 📁 Project Structure
-```text
-├── backend/
-│   ├── data/
-│   │   └── stats.json       # Stores anonymous choice selections
-│   ├── content.js           # Database of roles, tools, and 25 game challenges
-│   └── server.js            # Express routing and API endpoints
-├── frontend/
-│   ├── assets/              # Role illustrations and UI graphics
-│   ├── app.js               # Dynamic interaction and state machine script
-│   ├── game.html            # Headline challenge simulation views
-│   ├── index.html           # Landing page with metric cards and quote banners
-│   ├── learn.html           # Media roles details card showcase
-│   └── styles.css           # Global typography, color tokens, and layout styles
-├── .gitignore               # Ignored local files (node_modules, etc.)
-└── README.md                # Project documentation
-```
+## Deployment Link
+👉 **[View Live Site on Netlify](https://roleandinfluenceofmediaindemocracy.netlify.app/)**
