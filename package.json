@@ -1,0 +1,12 @@
+{
+  "name": "media-democracy-sim",
+  "version": "1.0.0",
+  "description": "An interactive web simulation about the role and influence of media in democracy.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

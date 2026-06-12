@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Media Influences Democracy</title>
+  
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Full-Width Sticky Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        <span class="brand-title">Media & Democracy Sim</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/learn" class="nav-link active">Learn Media Roles</a></li>
+        <li><a href="/game" class="nav-link">Play Simulation Game</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="btn-help" class="btn-icon" title="View Guide">
+          <i data-lucide="help-circle"></i>
+          <span>Guide</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Scrollable Content -->
+  <main class="main-content">
+    
+    <!-- SECTION 1: IDEAL ROLE OF MEDIA -->
+    <section id="ideal-role" class="content-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-badge">Democratic Journalism</span>
+          <h2 class="section-title">How Media Influences Democracy</h2>
+          <p class="section-subtitle">Explore the core functions of the press and their powerful influence on public opinion, elections, and civic accountability.</p>
+        </div>
+
+        <div class="two-column-layout">
+          <!-- Left Column -->
+          <div class="column-left">
+            <div class="illustration-box" id="role-showcase-img-container" style="margin-bottom: 24px; max-height: 450px;">
+              <img src="assets/ideal_role.png" alt="Ideal Role of Media" class="illustration" style="transition: opacity 0.15s ease;">
+            </div>
+            
+            <!-- Miniature Cards -->
+            <div class="pillars-preview">
+              <div class="pillar-card-mini" data-role="watchdog">
+                <i data-lucide="shield-alert"></i>
+                <h3>Watchdog</h3>
+                <p>Exposes corruption & power abuse</p>
+              </div>
+              <div class="pillar-card-mini" data-role="informer">
+                <i data-lucide="newspaper"></i>
+                <h3>Informer</h3>
+                <p>Provides verified facts to voters</p>
+              </div>
+              <div class="pillar-card-mini" data-role="public_forum">
+                <i data-lucide="users"></i>
+                <h3>Public Forum</h3>
+                <p>Gives voice to diverse opinions</p>
+              </div>
+              <div class="pillar-card-mini" data-role="gatekeeper">
+                <i data-lucide="filter"></i>
+                <h3>Gatekeeper</h3>
+                <p>Filters and verifies news claims</p>
+              </div>
+              <div class="pillar-card-mini" data-role="agenda_setter">
+                <i data-lucide="target"></i>
+                <h3>Agenda Setter</h3>
+                <p>Directs public to key issues</p>
+              </div>
+              <div class="pillar-card-mini" data-role="mobilizer">
+                <i data-lucide="megaphone"></i>
+                <h3>Mobilizer</h3>
+                <p>Promotes voting & civic action</p>
+              </div>
+              <div class="pillar-card-mini" data-role="educator">
+                <i data-lucide="book-open"></i>
+                <h3>Educator</h3>
+                <p>Explains bills & citizen rights</p>
+              </div>
+              <div class="pillar-card-mini" data-role="consensus_builder">
+                <i data-lucide="git-merge"></i>
+                <h3>Consensus</h3>
+                <p>Bridges political divides</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Column -->
+          <div class="column-right">
+            <div class="role-showcase-card" id="role-showcase-card" style="height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
+              <div class="showcase-details-box" id="role-showcase-details">
+                <h3 class="showcase-title">Core Roles of Democratic Media</h3>
+                <p class="showcase-detail-text">In a healthy democracy, a free and independent press serves the citizens. Click on any of the media role cards on the left to explore its specific influence, usage in democracy, and a real-world case study.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: MEDIA LITERACY TOOLKIT -->
+    <section id="toolkit" class="content-section alt-bg">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-badge">Fact-Checking Tools</span>
+          <h2 class="section-title">Critical News Verification</h2>
+          <p class="section-subtitle">Learn the key skills that help you spot rumors, check source credibility, and verify headlines before they spread.</p>
+        </div>
+
+        <div class="two-column-layout">
+          <!-- Left Column -->
+          <div class="column-left">
+            <div class="illustration-box">
+              <img src="assets/literacy_toolkit.png" alt="Media Literacy Toolkit" class="illustration">
+            </div>
+            <div class="pro-tip-box">
+              <i data-lucide="lightbulb" class="bulb-icon"></i>
+              <p><strong>Pro-Tip:</strong> Always look past sensational headlines before sharing information.</p>
+            </div>
+          </div>
+          
+          <!-- Right Column -->
+          <div class="column-right">
+            <div class="instruction-card">
+              <h3><i data-lucide="check-square"></i> Investigative Verification Methods</h3>
+              <p>Apply these methods to verify news claims in your daily social media feed to remain an informed and active citizen.</p>
+            </div>
+            <div class="interactive-list" id="s2-tools-list">
+              <!-- Rendered Dynamically from JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Step Button Call to Action -->
+        <div class="learn-footer-cta">
+          <div class="cta-message">
+            <h3>Ready to put your learning to the test?</h3>
+            <p>Now that you understand the influence of media roles and the fact-checking toolkit, face the feed challenge!</p>
+          </div>
+          <a href="/game" class="btn-primary-large">
+            <span>Play Simulation Game</span>
+            <i data-lucide="gamepad-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-icon-small">
+          <i data-lucide="scale"></i>
+        </div>
+        <span>Media & Democracy Simulation</span>
+      </div>
+      <p class="footer-text">An interactive educational project showing the roles, checklists, and outcomes of media literacy in a free democracy. Created for students and citizens.</p>
+      <p class="copyright">&copy; 2026. All rights reserved. Play responsively, check facts first.</p>
+    </div>
+  </footer>
+
+  <!-- Help Guide Modal (Learn Page version) -->
+  <div class="modal-overlay" id="help-modal">
+    <div class="modal-card">
+      <header class="modal-header">
+        <h2><i data-lucide="book-open"></i> Learning Guide</h2>
+        <button class="modal-close" id="btn-modal-close">&times;</button>
+      </header>
+      <div class="modal-body">
+        <h3>How to use this study guide:</h3>
+        <p>This page teaches you about media pillars and fact-checking checklists:</p>
+        
+        <ol class="modal-steps">
+          <li>
+            <strong>1. Role of Media:</strong> 
+            Click on each of the roles on the right (such as Watchdog, Informer, Public Forum, Gatekeeper, or Mobilizer) to open real-world examples and read details in the case study console.
+          </li>
+          <li>
+            <strong>2. Literacy Toolkit:</strong> 
+            Click on each item in the checklist to expand its guidelines, spotting tips, and critical verification methods.
+          </li>
+          <li>
+            <strong>3. Test Yourself:</strong> 
+            Once you have read both sections, click the button at the bottom of the page to launch the interactive simulation game.
+          </li>
+        </ol>
+        
+        <div class="modal-tip">
+          <i data-lucide="shield-check"></i>
+          <p><strong>Goal:</strong> Learn how to keep our democracy healthy by stopping the spread of fake news and rumors!</p>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button class="btn-primary" id="btn-modal-start">Got it, Let's Learn!</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Client-side Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>

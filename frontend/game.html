@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Game: Headline Challenge</title>
+  
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Full-Width Sticky Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        <span class="brand-title">Media & Democracy Sim</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/learn" class="nav-link">Learn Media Roles</a></li>
+        <li><a href="/game" class="nav-link active">Play Simulation Game</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="btn-help" class="btn-icon" title="View Guide">
+          <i data-lucide="help-circle"></i>
+          <span>Guide</span>
+        </button>
+        <button id="btn-reset" class="btn-icon" title="Reset Simulation">
+          <i data-lucide="rotate-ccw"></i>
+          <span>Reset Game</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Scrollable Content -->
+  <main class="main-content">
+    
+    <!-- INTERACTIVE HEADLINE SIMULATION SECTION -->
+    <section id="challenge-section" class="content-section game-page-section">
+      <div class="section-container">
+        
+        <!-- HEADER WITH PROGRESS BAR -->
+        <div class="section-header text-center" id="game-intro-header">
+          <span class="section-badge" id="game-progress-badge">Question 1 of 5</span>
+          <h2 class="section-title">Headline Challenge Arena</h2>
+          <p class="section-subtitle">Read the simulated news card, make your move, and verify your choices.</p>
+          
+          <!-- Game progress dots -->
+          <div class="game-dots-container" id="game-dots">
+            <div class="game-dot active"></div>
+            <div class="game-dot"></div>
+            <div class="game-dot"></div>
+            <div class="game-dot"></div>
+            <div class="game-dot"></div>
+          </div>
+        </div>
+
+        <!-- MAIN GAME PANEL -->
+        <div class="challenge-game-container" id="challenge-game-card">
+          <div class="game-split-grid">
+            
+            <!-- Left Panel: Feed Simulation and Choices -->
+            <div class="game-play-panel">
+              <div class="panel-header">
+                <h3><i data-lucide="gamepad-2"></i> Challenge Feed</h3>
+              </div>
+              
+              <!-- Simulated social news card -->
+              <div class="simulated-feed-container">
+                <div class="feed-header">
+                  <div class="feed-logo">
+                    <i data-lucide="newspaper"></i>
+                  </div>
+                  <div class="feed-header-text">
+                    <span class="feed-meta-title">BREAKING NEWS FEED SIMULATION</span>
+                    <span class="feed-source" id="s3-source">Loading-Source...</span>
+                  </div>
+                </div>
+                <div class="feed-body">
+                  <h3 class="feed-headline" id="s3-headline">Loading headline...</h3>
+                  <p class="feed-desc" id="s3-desc">Loading description...</p>
+                </div>
+                <div class="feed-footer">
+                  <span class="feed-action-btn"><i data-lucide="thumbs-up"></i> Like</span>
+                  <span class="feed-action-btn"><i data-lucide="message-circle"></i> Comment</span>
+                  <span class="feed-action-btn"><i data-lucide="share-2"></i> Share</span>
+                </div>
+              </div>
+              
+              <!-- Choices Area -->
+              <div class="choices-container">
+                <div class="action-checklist-header">
+                  <span class="checklist-title">Your Action Checklist:</span>
+                  <button id="btn-fact-check-hint" class="badge-btn">
+                    <i data-lucide="search"></i>
+                    <span>Hint: Run a Fact-Check</span>
+                  </button>
+                </div>
+                
+                <h3 class="question-text" id="s3-question">What is your next move with this article?</h3>
+                
+                <div class="choices-grid" id="s3-choices-list">
+                  <!-- JS Rendered -->
+                </div>
+              </div>
+              
+              <!-- Hint Panel -->
+              <div class="footer-hint-text-panel" id="hint-display-panel">
+                <i data-lucide="help-circle"></i>
+                <span>Need help? Click the hint badge above to analyze this source website.</span>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="game-submit-actions">
+                <button id="btn-s3-lock" class="btn-primary-large" disabled>
+                  <i data-lucide="lock"></i>
+                  <span>Lock Answer</span>
+                </button>
+                <button id="btn-next-question" class="btn-primary-large hidden">
+                  <span>Next Question</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Right Panel: Impact Dashboard (Locked/Hidden until play) -->
+            <div class="game-outcome-panel locked" id="game-outcome-panel">
+              <!-- Overlay shown before user plays -->
+              <div class="outcome-lock-overlay" id="outcome-overlay">
+                <div class="lock-icon-box">
+                  <i data-lucide="lock" class="lock-icon"></i>
+                </div>
+                <h3>Result & Impact Locked</h3>
+                <p>Lock in your decision on the left to witness your impact on democracy and explore global statistics.</p>
+              </div>
+              
+              <!-- Active Outcome Content -->
+              <div class="outcome-active-content">
+                <div class="panel-header">
+                  <h3><i data-lucide="activity"></i> Democracy Impact Dashboard</h3>
+                </div>
+                
+                <div class="outcome-scroll-box">
+                  <div class="user-choice-badge" id="s4-choice-indicator">
+                    <span>Your Choice:</span>
+                    <strong id="s4-selected-choice-text">Fact-Checked First</strong>
+                  </div>
+
+                  <!-- Dynamic Feedback Card -->
+                  <div class="feedback-card" id="s4-feedback-card">
+                    <div class="feedback-badge-header">
+                      <i id="s4-feedback-icon" data-lucide="award"></i>
+                      <h3 id="s4-feedback-title">🏆 Great Choice! Civic Champion</h3>
+                    </div>
+                    <p id="s4-feedback-text">By checking facts first, you help build a better society and protect the truth.</p>
+                  </div>
+                  
+                  <!-- Consequences list -->
+                  <div class="outcomes-list-box">
+                    <h4>Direct Consequences:</h4>
+                    <ul id="s4-consequences-list" class="consequences-list">
+                      <!-- JS populated -->
+                    </ul>
+                  </div>
+
+                  <!-- Global Stats -->
+                  <div class="statistics-box">
+                    <h4>Community Decisions (Global Statistics)</h4>
+                    <div class="stats-chart" id="s4-stats-chart">
+                      <!-- JS populated progress bars -->
+                    </div>
+                    
+                    <!-- Community Civic Health meter -->
+                    <div class="civic-health-meter">
+                      <div class="civic-health-label">
+                        <span>Community Civic Health:</span>
+                        <strong id="civic-health-val">75%</strong>
+                      </div>
+                      <div class="civic-health-bar-bg">
+                        <div class="civic-health-bar-fill" id="civic-health-fill"></div>
+                      </div>
+                      <p class="civic-health-desc">Every wise decision strengthens community health; spreading unverified rumors weakens it.</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- FINAL SUMMARY SCOREBOARD PANEL (Initially hidden) -->
+        <div class="final-summary-card hidden" id="final-summary-card">
+          <div class="summary-header text-center">
+            <div class="cup-icon-box">
+              <i data-lucide="trophy"></i>
+            </div>
+            <h2>Simulation Completed!</h2>
+            <p>You have evaluated all 5 challenge stories. Here is your citizen report card:</p>
+          </div>
+
+          <div class="summary-split-grid">
+            <div class="summary-left-score">
+              <div class="score-radial-progress">
+                <div class="score-value" id="summary-score-val">80%</div>
+                <div class="score-label">Personal Civic Health</div>
+              </div>
+              
+              <div class="summary-badge" id="summary-rank-badge">
+                <i data-lucide="award"></i>
+                <span id="summary-rank-title">Master Fact-Checker</span>
+              </div>
+            </div>
+            
+            <div class="summary-right-details">
+              <h3>Civic Performance Review:</h3>
+              <p id="summary-rank-desc">Your critical thinking helps stop the spread of rumors, keeping the public informed and democratic institutions secure from false alarms.</p>
+              
+              <div class="summary-stat-indicators">
+                <div class="stat-indicator">
+                  <span class="indicator-label">Total Questions Checked:</span>
+                  <strong class="indicator-value">5</strong>
+                </div>
+                <div class="stat-indicator">
+                  <span class="indicator-label">Accuracy / Wise Decisions:</span>
+                  <strong class="indicator-value" id="summary-accuracy-val">4 / 5</strong>
+                </div>
+              </div>
+
+              <div class="summary-actions-block">
+                <button id="btn-summary-restart" class="btn-primary-large">
+                  <i data-lucide="refresh-cw"></i>
+                  <span>Play Again (Get 5 New Random Questions)</span>
+                </button>
+                <a href="/learn" class="btn-secondary-large">
+                  <i data-lucide="book-open"></i>
+                  <span>Review Media Roles</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="summary-questions-review">
+            <h3 class="review-title"><i data-lucide="clipboard-list"></i> Round-by-Round Breakdown</h3>
+            <div class="review-list" id="summary-questions-list">
+              <!-- JS Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Nav Back Link -->
+        <div class="game-footer-cta">
+          <a href="/learn" class="btn-secondary-large">
+            <i data-lucide="book-open"></i>
+            <span>Study Media Roles & Skills First</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-icon-small">
+          <i data-lucide="scale"></i>
+        </div>
+        <span>Media & Democracy Simulation</span>
+      </div>
+      <p class="footer-text">An interactive educational project showing the roles, checklists, and outcomes of media literacy in a free democracy. Created for students and citizens.</p>
+      <p class="copyright">&copy; 2026. All rights reserved. Play responsively, check facts first.</p>
+    </div>
+  </footer>
+
+  <!-- Help Guide Modal (Game Page version) -->
+  <div class="modal-overlay" id="help-modal">
+    <div class="modal-card">
+      <header class="modal-header">
+        <h2><i data-lucide="book-open"></i> Simulator Guide</h2>
+        <button class="modal-close" id="btn-modal-close">&times;</button>
+      </header>
+      <div class="modal-body">
+        <h3>How to play the simulation:</h3>
+        
+        <ol class="modal-steps">
+          <li>
+            <strong>1. Play 5 Random Challenges:</strong> 
+            A random set of 5 headlines from a pool of 25 is generated. You will evaluate them one by one.
+          </li>
+          <li>
+            <strong>2. Inspect the Post & Hint:</strong> 
+            Check the headline, URL, and click "Hint" to run a background domain lookup.
+          </li>
+          <li>
+            <strong>3. Choose and Lock:</strong> 
+            Select A, B, C, or D and lock your choice. The dashboard on the right will reveal the outcomes.
+          </li>
+          <li>
+            <strong>4. Advance & Score:</strong> 
+            Click "Next Question" to proceed. At the end of the 5th question, unlock your Citizen Report Card!
+          </li>
+        </ol>
+        
+        <div class="modal-tip">
+          <i data-lucide="shield-check"></i>
+          <p><strong>Goal:</strong> Maintain a high Personal Civic Health percentage by fact-checking and reporting fake stories!</p>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button class="btn-primary" id="btn-modal-start">Got it, Let's Play!</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Client-side Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>

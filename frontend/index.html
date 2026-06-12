@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media & Democracy Simulation Portal</title>
+  
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Full-Width Sticky Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        <span class="brand-title">Media & Democracy Sim</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link active">Home</a></li>
+        <li><a href="/learn" class="nav-link">Learn Media Roles</a></li>
+        <li><a href="/game" class="nav-link">Play Simulation Game</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button id="btn-help" class="btn-icon" title="View Guide">
+          <i data-lucide="help-circle"></i>
+          <span>Guide</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Frame -->
+  <main class="main-content">
+    
+    <!-- Hero Portal Section -->
+    <section class="hero-section landing-hero">
+      <div class="hero-bg-glows">
+        <div class="glow-1"></div>
+        <div class="glow-2"></div>
+      </div>
+      <div class="hero-container">
+        <span class="hero-badge"><i data-lucide="globe"></i> Citizen Education Portal</span>
+        <h1 class="hero-title">Role & Influence of Media in Democracy</h1>
+        <p class="hero-subtitle">How does journalism hold power accountable? Can citizens protect the truth? Explore our interactive portal to learn media roles and play the simulator.</p>
+        
+        <div class="landing-cards-grid">
+          <!-- Card 1: Learn Roles -->
+          <a href="/learn" class="landing-cta-card card-learn">
+            <div class="card-glow"></div>
+            <div class="card-icon-box">
+              <i data-lucide="book-open"></i>
+            </div>
+            <h2>Learn Media Roles & Skills</h2>
+            <p>Teach yourself how the press acts as an informer, watchdog, and public forum, and gain 3 tools to spot fake news.</p>
+            <span class="card-action-text">Start Learning <i data-lucide="arrow-right"></i></span>
+          </a>
+
+          <!-- Card 2: Play Game -->
+          <a href="/game" class="landing-cta-card card-play">
+            <div class="card-glow"></div>
+            <div class="card-icon-box">
+              <i data-lucide="gamepad-2"></i>
+            </div>
+            <h2>Play Simulation Game</h2>
+            <p>Step into the challenge arena! Review simulated feed headlines, make choices, and see your direct impact on community health.</p>
+            <span class="card-action-text">Launch Simulation <i data-lucide="play-circle"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE METRICS BANNER -->
+    <section class="live-metrics-section">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-number">48,250+</span>
+          <span class="metric-label">Citizens Trained</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-number">250,000+</span>
+          <span class="metric-label">Headlines Checked</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-number">94.8%</span>
+          <span class="metric-label">Community Resilience Rating</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Features Overview Section -->
+    <section class="content-section alt-bg">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-badge">How It Works</span>
+          <h2 class="section-title">A Gamified Journey to Truth</h2>
+          <p class="section-subtitle">Become an active citizen by training your critical thinking skills.</p>
+        </div>
+
+        <div class="pillars-preview landing-features-grid">
+          <div class="pillar-card-mini feature-card">
+            <i data-lucide="shield-alert"></i>
+            <h3>Understand Accountability</h3>
+            <p>Learn how investigative reporters monitor governments and corporations to maintain public transparency and safety.</p>
+          </div>
+          <div class="pillar-card-mini feature-card">
+            <i data-lucide="search"></i>
+            <h3>Detect Hidden Biases</h3>
+            <p>Identify emotional words, sensationalism, unchecked sources, and rumors that poison public trust.</p>
+          </div>
+          <div class="pillar-card-mini feature-card">
+            <i data-lucide="bar-chart-2"></i>
+            <h3>Witness Civic Results</h3>
+            <p>Examine how voting, fact-checking, or sharing news changes public polarizations and community health metrics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTES & TESTIMONIALS SECTION -->
+    <section class="content-section quotes-section">
+      <div class="section-container text-center">
+        <div class="quote-container">
+          <i data-lucide="quote" class="quote-icon"></i>
+          <blockquote class="democracy-quote">
+            "Our liberty depends on the freedom of the press, and that cannot be limited without being lost."
+          </blockquote>
+          <cite class="quote-author">— Thomas Jefferson, 1786</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUSTED PARTNERS BANNER -->
+    <section class="partners-section">
+      <div class="section-container text-center">
+        <span class="partners-title">Educational & Advocacy Coalition Partners</span>
+        <div class="partners-grid">
+          <div class="partner-logo"><i data-lucide="landmark"></i> <span>Democracy Alliance</span></div>
+          <div class="partner-logo"><i data-lucide="shield-check"></i> <span>FactCheck Alliance</span></div>
+          <div class="partner-logo"><i data-lucide="globe"></i> <span>Global Media Council</span></div>
+          <div class="partner-logo"><i data-lucide="graduation-cap"></i> <span>Civic Ed Foundation</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-icon-small">
+          <i data-lucide="scale"></i>
+        </div>
+        <span>Media & Democracy Simulation</span>
+      </div>
+      <p class="footer-text">An interactive educational project showing the roles, checklists, and outcomes of media literacy in a free democracy. Created for students and citizens.</p>
+      <p class="copyright">&copy; 2026. All rights reserved. Play responsively, check facts first.</p>
+    </div>
+  </footer>
+
+  <!-- Help Guide Modal (Landing Page version) -->
+  <div class="modal-overlay" id="help-modal">
+    <div class="modal-card">
+      <header class="modal-header">
+        <h2><i data-lucide="book-open"></i> Portal Guide</h2>
+        <button class="modal-close" id="btn-modal-close">&times;</button>
+      </header>
+      <div class="modal-body">
+        <h3>Welcome to the Media & Democracy Simulator!</h3>
+        <p>This interactive portal consists of two primary educational routes:</p>
+        
+        <ol class="modal-steps">
+          <li>
+            <strong>1. Learn Media Roles:</strong> 
+            Click this card to study the core roles of media in a democracy (such as Watchdog, Informer, and Public Forum) and the 3 investigative skills in the Literacy Toolkit.
+          </li>
+          <li>
+            <strong>2. Play Simulation Game:</strong> 
+            Click this card to face the news feed challenge. Lock in your choice to witness outcomes, review choice stats, and monitor community health.
+          </li>
+        </ol>
+        
+        <div class="modal-tip">
+          <i data-lucide="shield-check"></i>
+          <p><strong>Goal:</strong> Learn how to keep our democracy healthy by stopping the spread of fake news and rumors!</p>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button class="btn-primary" id="btn-modal-start">Got it, Let's Play!</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Client-side Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>
