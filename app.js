@@ -464,20 +464,10 @@ async function submitGameChoice() {
   const question = activeQuestions[currentQuestionIndex];
   
   try {
-    const response = await fetch('/api/choice', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        questionId: question.id,
-        choice: selectedChoice
-      })
-    });
+    // Artificial 250ms delay to feel professional
+    await new Promise(resolve => setTimeout(resolve, 250));
     
-    if (!response.ok) throw new Error('API submission failed');
-    
-    const result = await response.json();
+    const result = evaluateChoiceClient(question.id, selectedChoice);
     
     // Save to history for final round breakdown
     gameSessionHistory.push({
@@ -530,7 +520,7 @@ async function submitGameChoice() {
     }
   } catch (error) {
     console.error('Error submitting choice:', error);
-    alert('Failed to connect to simulation server to register choice.');
+    alert('Failed to process choice.');
     if (btnS3Lock) {
       btnS3Lock.disabled = false;
       btnS3Lock.innerHTML = `<i data-lucide="lock"></i> <span>Lock Answer</span>`;
@@ -749,14 +739,141 @@ function restartGameSimulation() {
 // ========================================================
 // UTILS
 // ========================================================
-// Fetch simulation content details from backend API
+// Fetch simulation content details locally
 async function fetchSimulationContent() {
-  try {
-    const response = await fetch('/api/content');
-    if (!response.ok) throw new Error('Failed to fetch content');
-    
-    simulationContent = await response.json();
-  } catch (error) {
-    console.error('Error fetching content:', error);
+  simulationContent = simulationContentData;
+}
+
+// Client-side evaluator to process choice and simulate community stats
+function evaluateChoiceClient(questionId, choice) {
+  const question = simulationContent.challengePool.find(q => q.id === Number(questionId));
+  if (!question) return null;
+
+  let outcome = {};
+  const isReal = question.type === 'real';
+
+  if (choice === 'A') {
+    outcome = {
+      choiceLabel: "Fact-Checked First",
+      badgeClass: "badge-success",
+      badgeIcon: "award",
+      badgeTitle: "🏆 Wise Choice! Fact-Checker",
+      badgeText: isReal 
+        ? "Even though this news is true, fact-checking first is the only way to defend the truth."
+        : "By checking facts first, you stopped the rumor chain and protected your community.",
+      civicHealthDelta: 25,
+      consequences: isReal 
+        ? [
+            "**Verified Truth**: You confirmed the source was official, making you a trusted citizen.",
+            "**Supported Democracy**: Informed citizens can act on real policies and help society run better."
+          ]
+        : [
+            "**Halted Misinformation**: The chain of fake news stopped with you, reducing public confusion.",
+            "**Protected Society**: Well-informed voters hold public officials accountable fairly."
+          ]
+    };
+  } else if (choice === 'B') {
+    outcome = {
+      choiceLabel: "Shared Instantly",
+      badgeClass: "badge-danger",
+      badgeIcon: "alert-triangle",
+      badgeTitle: isReal ? "📢 Lucky Choice! Informed but Risky" : "⚠️ Risky Choice! Rumor Spreader",
+      badgeText: isReal
+        ? "This news is true, so sharing it was helpful, but you took a risk by not checking the source first."
+        : "Sharing unverified headlines spreads fear and weakens community trust.",
+      civicHealthDelta: isReal ? 10 : -25,
+      consequences: isReal
+        ? [
+            "**Spread Good News**: The community was informed about a real vaccination or safety drive.",
+            "**Risky Habit**: If the news had been fake, you would have spread a rumor. Always verify first."
+          ]
+        : [
+            "**Spread of Misinformation**: You contributed to a viral rumor that turned out to be false.",
+            "**Damaged Public Trust**: Citizens lost trust in public institutions based on a fake story."
+          ]
+    };
+  } else if (choice === 'C') {
+    outcome = {
+      choiceLabel: "Ignored & Scrolled",
+      badgeClass: "badge-warning",
+      badgeIcon: "eye-off",
+      badgeTitle: "💤 Passive Choice! Silent Observer",
+      badgeText: isReal
+        ? "You ignored the post. While it didn't spread fake news, you missed out on important verified warnings."
+        : "Ignoring prevents spreading rumors, but it doesn't help address fake news.",
+      civicHealthDelta: 0,
+      consequences: isReal
+        ? [
+            "**Missed Information**: You missed a verified government warning or helpful public update.",
+            "**Passive Citizen**: Democracy needs active, informed citizens who engage with real news."
+          ]
+        : [
+            "**Unchecked Rumors**: Although you didn't spread it, others will, and the rumor continues.",
+            "**Missed Opportunity**: You missed the chance to report the post and stop the misinformation."
+          ]
+    };
+  } else if (choice === 'D') {
+    outcome = {
+      choiceLabel: "Reported Post",
+      badgeClass: isReal ? "badge-danger" : "badge-info",
+      badgeIcon: isReal ? "x-circle" : "shield",
+      badgeTitle: isReal ? "❌ Poor Choice! False Flag" : "🛡️ Proactive Choice! Digital Defender",
+      badgeText: isReal
+        ? "You reported verified news! Flagging real warnings as fake news hurts public safety campaigns."
+        : "Reporting helps platforms label bad actors and limit the reach of fake news.",
+      civicHealthDelta: isReal ? -15 : 15,
+      consequences: isReal
+        ? [
+            "**Censored Truth**: You flagged actual public alerts, potentially blocking important info from others.",
+            "**Damaged Trust**: Reporting verified news spreads confusion and delays vital public actions."
+          ]
+        : [
+            "**Protected Community**: Fewer people will see this fake story in their newsfeeds.",
+            "**Civic Action**: You took active responsibility to maintain a cleaner digital public square."
+          ]
+    };
   }
+
+  // Manage choice statistics in local storage to simulate community votes
+  let storedStats = localStorage.getItem('sim_stats');
+  if (!storedStats) {
+    const defaultStats = {};
+    for (let i = 1; i <= 25; i++) {
+      defaultStats[i] = { A: 48, B: 24, C: 18, D: 30 };
+    }
+    storedStats = JSON.stringify(defaultStats);
+    localStorage.setItem('sim_stats', storedStats);
+  }
+  const stats = JSON.parse(storedStats);
+  const qIdStr = String(questionId);
+  if (!stats[qIdStr]) {
+    stats[qIdStr] = { A: 48, B: 24, C: 18, D: 30 };
+  }
+  stats[qIdStr][choice]++;
+  localStorage.setItem('sim_stats', JSON.stringify(stats));
+
+  const qStats = stats[qIdStr];
+  const total = Object.values(qStats).reduce((sum, val) => sum + val, 0);
+  const percentages = {
+    A: Math.round((qStats.A / total) * 100),
+    B: Math.round((qStats.B / total) * 100),
+    C: Math.round((qStats.C / total) * 100),
+    D: Math.round((qStats.D / total) * 100)
+  };
+
+  const cumulativeWeightedScore = (qStats.A * 25) + (qStats.D * 15) + (qStats.C * 0) + (qStats.B * -25);
+  const worstCase = total * -25;
+  const bestCase = total * 25;
+  const range = bestCase - worstCase;
+  const communityCivicHealth = range > 0 
+    ? Math.round(((cumulativeWeightedScore - worstCase) / range) * 100)
+    : 50;
+
+  return {
+    choiceSelected: choice,
+    outcome: outcome,
+    stats: percentages,
+    totalPlayers: total,
+    communityCivicHealth: communityCivicHealth
+  };
 }
